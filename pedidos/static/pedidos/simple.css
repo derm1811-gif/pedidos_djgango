@@ -56,11 +56,6 @@ body {
     font-weight: 800;
 }
 
-.derm-brand-caption {
-    color: var(--derm-yellow);
-    font-weight: 600;
-}
-
 .topbar-account,
 .topbar-account a {
     color: white;

@@ -1,0 +1,21 @@
+{% extends 'pedidos/base.html' %}
+
+{% block title %}{{ producto.nombre }} | DERM ventas{% endblock %}
+
+{% block content %}
+<a class="link-secondary text-decoration-none" href="/productos/lista/">&larr; Productos</a>
+<div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mt-3 mb-4">
+    <div><p class="text-uppercase small fw-semibold text-primary mb-1">Detalle del producto</p><h1 class="h2 mb-0">{{ producto.nombre }}</h1></div>
+    <a class="btn btn-outline-primary align-self-sm-start" href="/productos/editar/{{ producto.id }}/">Editar producto</a>
+</div>
+
+<section class="bg-white border rounded-3 p-4 p-lg-5">
+    <dl class="row mb-0">
+        <dt class="col-sm-4 py-2">Descripción</dt><dd class="col-sm-8 py-2">{{ producto.descripcion|linebreaksbr }}</dd>
+        <dt class="col-sm-4 py-2">Precio</dt><dd class="col-sm-8 py-2">${{ producto.precio }}</dd>
+        <dt class="col-sm-4 py-2">Cantidad disponible</dt><dd class="col-sm-8 py-2">{{ producto.cantidad_disponible }}</dd>
+        <dt class="col-sm-4 py-2">Estado</dt><dd class="col-sm-8 py-2">{% if producto.estado %}Disponible{% else %}No disponible{% endif %}</dd>
+        <dt class="col-sm-4 py-2">Fecha de registro</dt><dd class="col-sm-8 py-2">{{ producto.fecha_registro|date:'d/m/Y H:i' }}</dd>
+    </dl>
+</section>
+{% endblock %}

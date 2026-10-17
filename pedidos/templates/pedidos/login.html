@@ -1,0 +1,31 @@
+{% extends 'pedidos/base.html' %}
+
+{% block title %}Iniciar sesión | DERM ventas{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-7 col-lg-5">
+        <section class="bg-white border rounded-3 p-4 p-md-5 shadow-sm">
+            <p class="text-uppercase small fw-semibold text-primary mb-2">Acceso al sistema</p>
+            <h1 class="h3 mb-4">Iniciar sesión</h1>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">{{ form.non_field_errors }}</div>
+                {% endif %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% for error in field.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}
+                    </div>
+                {% endfor %}
+                <button class="btn btn-primary w-100 mt-2" type="submit">Entrar</button>
+            </form>
+            <p class="text-center text-secondary mt-4 mb-0">
+                ¿No tienes cuenta? <a href="{% url 'pedidos:registro' %}">Crear una cuenta</a>
+            </p>
+        </section>
+    </div>
+</div>
+{% endblock %}
